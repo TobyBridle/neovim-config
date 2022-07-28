@@ -111,6 +111,13 @@ return require("packer").startup(function(use)
 
     -- UI Stuff
 
+    use {
+        'glepnir/lspsaga.nvim',
+        config = function()
+            require "lspsaga".init_lsp_saga()
+        end,
+    }
+
     -- Treesitter for better highlighting and improved movement
     use {
         "nvim-treesitter/nvim-treesitter",

@@ -39,7 +39,7 @@ wk.register({
     }
 }, { prefix = "<Leader>"})
 
--- Buffers wk.register({["<Tab>"] = {"<CMD>BufferNext<CR>", "Go to next Buffer"}})
+wk.register({["<Tab>"] = {"<CMD>BufferNext<CR>", "Go to next Buffer"}})
 wk.register({["<S-Tab>"] = {"<CMD>BufferPrevious<CR>", "Go to previous Buffer"}})
 wk.register({
     ["<C-h>"] = { "<CMD>wincmd h<CR>", "Go to left window"},
