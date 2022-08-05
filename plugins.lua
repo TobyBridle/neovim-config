@@ -275,4 +275,12 @@ return require("packer").startup(function(use)
             require 'which-key'.register { ['\\'] = { "<CMD>HopWord<CR>", "Quick navigation using Hop" } }
         end
     }
+
+    use { 'michaelb/sniprun', run = 'bash ./install.sh' }
+    use {
+        "rcarriga/nvim-notify",
+        config = function()
+            require("notify").setup {}
+        end
+    }
 end)
