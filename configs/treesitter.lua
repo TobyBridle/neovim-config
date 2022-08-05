@@ -1,6 +1,7 @@
-local tsconfig = require'nvim-treesitter.configs'
+local tsconfig = require 'nvim-treesitter.configs'
 tsconfig.setup {
-    ensure_installed = { 'c', 'lua', 'rust', 'html', 'javascript', 'css', 'python', 'latex', 'json', 'dockerfile', 'cmake', 'make' },
+    ensure_installed = { 'c', 'lua', 'rust', 'html', 'javascript', 'css', 'python', 'latex', 'json', 'dockerfile',
+        'cmake', 'make' },
     highlight = { enable = true },
     -- indent = { enable = true },
     autopairs = { enable = true },
