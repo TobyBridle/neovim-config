@@ -30,7 +30,10 @@ local settings = { sumneko_lua = { Lua = { diagnostics = { globals = { "vim", "n
 for _, server in ipairs(servers) do
     lspconfig[server].setup {
         capabilities = capabilities,
-        on_attach = function()
+        on_attach = function(client)
+            if client.supports_method("textDocument/formatting") then
+                client.resolved_capabilities.document_formatting = false
+            end
             register_wk("K", vim.lsp.buf.hover, "Show docs for keyword", "", "LSP")
             register_wk("d", vim.lsp.buf.definition, "Goto definition", "g", "LSP")
             register_wk("T", vim.lsp.buf.type_definition, "Goto type definition", "g", "LSP")
