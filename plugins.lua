@@ -207,8 +207,8 @@ return require("packer").startup(function(use)
     }
 
     use {
-        "numToStr/Comment.nvim",
-        config = function() require 'Comment'.setup {} end,
+        "terrortylor/nvim-comment",
+        config = function() require 'nvim_comment'.setup {} end,
     }
 
     use 'JoosepAlviste/nvim-ts-context-commentstring'

@@ -17,7 +17,7 @@ tsconfig.setup {
     },
     additional_vim_regex_highlighting = true,
     context_commentstring = { -- NOTE: Assuming 'JoosepAlviste/nvim-ts-context-commentstring' is installed!
-        enable = true
+        enable = true,
     }
 }
 
