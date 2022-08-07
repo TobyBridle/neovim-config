@@ -211,6 +211,8 @@ return require("packer").startup(function(use)
         config = function() require 'Comment'.setup {} end,
     }
 
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
+
     use {
         "danymat/neogen",
         config = function()
