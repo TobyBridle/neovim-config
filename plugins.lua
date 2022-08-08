@@ -23,9 +23,7 @@ return require("packer").startup(function(use)
   use {
     "folke/tokyonight.nvim",
     config = function()
-      vim.g.tokyonight_style = "night"
-      vim.g.tokyonight_transparent = true
-      vim.cmd [[colorscheme tokyonight]]
+      require "colors.tokyonight"
     end,
   }
   use {
@@ -42,13 +40,6 @@ return require("packer").startup(function(use)
   }
 
   use "kyazdani42/nvim-web-devicons"
-
-  use {
-    "ojroques/nvim-hardline",
-    config = function()
-      require("hardline").setup {}
-    end,
-  }
 
   -- LSP: & Completion Stuff
   use {
@@ -198,9 +189,9 @@ return require("packer").startup(function(use)
   }
 
   use {
-    "feline-nvim/feline.nvim",
+    "ojroques/nvim-hardline",
     config = function()
-      require("feline").setup {}
+      require("hardline").setup {}
     end,
   }
 

@@ -64,8 +64,8 @@ wk.register({
 wk.register { ["<Tab>"] = { "<CMD>BufferLineCycleNext<CR>", "Go to next Buffer" } }
 wk.register { ["<S-Tab>"] = { "<CMD>BufferLineCyclePrev<CR>", "Go to previous Buffer" } }
 
-wk.register { ["<C-w>l"] = { "<CMD>tabnext<CR>", "Go to next Tab" } }
-wk.register { ["<C-w>h"] = { "<CMD>tabprevious<CR>", "Go to previous Tab" } }
+wk.register { ["]t"] = { "<CMD>tabnext<CR>", "Go to next Tab" } }
+wk.register { ["[t"] = { "<CMD>tabprevious<CR>", "Go to previous Tab" } }
 
 wk.register {
   ["<C-p>"] = { "<CMD>BufferLineTogglePin<CR>", "Pin a buffer on the bufferline" },
