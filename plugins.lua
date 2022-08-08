@@ -189,6 +189,15 @@ return require("packer").startup(function(use)
   -- }
   --
   use {
+    "akinsho/bufferline.nvim",
+    tag = "v2.*",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("bufferline").setup { always_show_bufferline = true }
+    end,
+  }
+
+  use {
     "feline-nvim/feline.nvim",
     config = function()
       require("feline").setup {}
