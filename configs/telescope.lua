@@ -4,9 +4,12 @@ if not present then
   return
 end
 
+--  Used for custom mappings dependant on having Trouble
+local trouble_found, trouble = pcall(require, "trouble.providers.telescope")
+
 vim.g.theme_switcher_loaded = true
 
-local options = {
+options = {
   defaults = {
     vimgrep_arguments = {
       "rg",
@@ -44,7 +47,7 @@ local options = {
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     path_display = { "truncate" },
     winblend = 0,
-    border = false, 
+    border = false,
     color_devicons = true,
     set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
@@ -53,7 +56,11 @@ local options = {
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
-      n = { ["q"] = require("telescope.actions").close },
+      n = {
+        ["q"] = require("telescope.actions").close,
+        ["<C-q>"] = trouble_found and trouble.open_with_trouble,
+      },
+      i = { ["<C-q>"] = trouble_found and trouble.open_with_trouble },
     },
   },
 
