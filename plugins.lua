@@ -5,20 +5,18 @@ return require("packer").startup(function(use)
   -- -- THEMES --
   -- Gruvbox theme with integration with Treesitter
 
-  -- use {
-  --   "luisiacc/gruvbox-baby",
-  --   config = "vim.cmd [[colorscheme gruvbox-baby]]",
-  -- }
+  use {
+    "luisiacc/gruvbox-baby",
+  }
 
-  -- use {
-  --   "catppuccin/nvim",
-  --   as = "catppuccin",
-  --   config = function()
-  --     vim.g.catppuccin_flavour = "mocha"
-  --     require("catppuccin").setup { transparent_background = true }
-  --     vim.cmd [[colorscheme catppuccin]]
-  --   end,
-  -- }
+  use {
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      vim.g.catppuccin_flavour = "mocha"
+      require("catppuccin").setup { transparent_background = true }
+    end,
+  }
   --
   use {
     "folke/tokyonight.nvim",
@@ -46,12 +44,9 @@ return require("packer").startup(function(use)
     "neovim/nvim-lspconfig",
   }
 
-  -- use({
-  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  --   config = function()
-  --     require("lsp_lines").setup()
-  --   end,
-  -- })
+  use {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  }
 
   use {
     "hrsh7th/nvim-cmp",
@@ -155,7 +150,7 @@ return require("packer").startup(function(use)
     "ziontee113/syntax-tree-surfer",
     requires = "nvim-treesitter/nvim-treesitter",
     config = function()
-      require "configs/syntax-tree-surfer"
+      require("syntax-tree-surfer").setup {}
     end,
   }
 

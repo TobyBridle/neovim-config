@@ -11,5 +11,3 @@ local opts = {
 for k, v in pairs(opts) do
   vim.g["tokyonight_" .. k] = v
 end
-
-vim.cmd [[colorscheme tokyonight]]
