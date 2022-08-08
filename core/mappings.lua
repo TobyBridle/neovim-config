@@ -53,12 +53,7 @@ wk.register({
     },
   },
   -- Terminal Keybindings
-  t = {
-    name = "Terminal",
-    f = { "<CMD>ToggleTerm direction=float<CR>", "Toggle a floating terminal" },
-    v = { "<CMD>ToggleTerm direction=vertical<CR>", "Toggle a vertical terminal" },
-    h = { "<CMD>ToggleTerm direction=horizontal<CR>", "Toggle a horizontal terminal" },
-  },
+  t = { "<CMD>lua require 'FTerm'.toggle()<CR>", "Toggle a Terminal" },
 }, { prefix = "<Leader>" })
 
 wk.register { ["<Tab>"] = { "<CMD>BufferLineCycleNext<CR>", "Go to next Buffer" } }
@@ -168,3 +163,9 @@ wk.register({
     L = { "<CMD>STSSelectChildNode<CR>", "Select Child Node" },
   },
 }, { mode = "v" })
+
+-- Terminal Mode
+wk.register({
+  ["<C-h>"] = { "<CMD>lua require 'FTerm'.toggle()<CR>", "Toggle the Terminal" },
+  ["<C-d>"] = { "<CMD>lua require 'FTerm'.close()<CR>", "Close the Terminal" },
+}, { mode = "t" })

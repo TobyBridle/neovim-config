@@ -280,12 +280,10 @@ return require("packer").startup(function(use)
 
   use "simrat39/symbols-outline.nvim"
 
-  -- NOTE: Change to FTerm since this thing is weird as fuck
   use {
-    "akinsho/toggleterm.nvim",
-    tag = "v2.*",
+    "numToStr/FTerm.nvim",
     config = function()
-      require("toggleterm").setup {}
+      require("FTerm").setup {}
     end,
   }
 
