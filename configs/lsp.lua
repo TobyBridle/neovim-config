@@ -16,6 +16,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 local servers = {
     "sumneko_lua",
     "rust_analyzer",
+    "taplo",
     "clangd",
     "cmake",
     "emmet_ls",
