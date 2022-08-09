@@ -341,6 +341,7 @@ return require("packer").startup(function(use)
     end,
   }
 
+  -- NOTE: Local in-buffer navigation
   use {
     "phaazon/hop.nvim",
     branch = "v2", -- optional but strongly recommended
@@ -348,6 +349,14 @@ return require("packer").startup(function(use)
       -- you can configure Hop the way you like here; see :h hop-config
       require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
       require("which-key").register { ["\\"] = { "<CMD>HopWord<CR>", "Quick navigation using Hop" } }
+    end,
+  }
+  -- NOTE: Between buffers navigation
+  use {
+    "ThePrimeagen/harpoon",
+    requires = "plenary.nvim",
+    config = function()
+      require "configs.harpoon"
     end,
   }
 
