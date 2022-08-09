@@ -108,7 +108,7 @@ wk.register {
 }
 
 wk.register {
-  [";"] = { ":nohl", "Turn off highlight" },
+  [";"] = { "<CMD>nohl<CR>", "Turn off highlight" },
 }
 
 wk.register {
