@@ -176,6 +176,12 @@ return require("packer").startup(function(use)
   }
 
   use {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    requires = { "nvim-treesitter" },
+    after = "nvim-treesitter",
+  }
+
+  use {
     "lukas-reineke/indent-blankline.nvim",
     event = "UIEnter",
     config = function()
