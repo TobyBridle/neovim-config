@@ -2,6 +2,23 @@ return require("packer").startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
+  use {
+    "lewis6991/impatient.nvim",
+    config = function()
+      _G.__luacache_config = {
+        chunks = {
+          enable = true,
+          path = vim.fn.stdpath "cache" .. "/luacache_chunks",
+        },
+        modpaths = {
+          enable = true,
+          path = vim.fn.stdpath "cache" .. "/luacache_modpaths",
+        },
+      }
+      require "impatient"
+    end,
+  }
+
   -- -- THEMES --
   -- Gruvbox theme with integration with Treesitter
 
@@ -34,7 +51,8 @@ return require("packer").startup(function(use)
 
   use {
     "stevearc/dressing.nvim",
-    after = "telescope.nvim",
+    -- after = "telescope.nvim",
+    event = "UIEnter",
   }
 
   use "kyazdani42/nvim-web-devicons"
@@ -42,15 +60,27 @@ return require("packer").startup(function(use)
   -- LSP: & Completion Stuff
   use {
     "neovim/nvim-lspconfig",
+    config = function()
+      require "configs.lsp"
+    end,
   }
 
   use {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    after = "nvim-lspconfig",
+    -- event = "BufRead",
   }
 
   use {
     "hrsh7th/nvim-cmp",
-    requires = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lua" },
+    event = "InsertEnter",
+    requires = {
+      { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+      { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+      { "hrsh7th/cmp-path", after = "nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+      { "windwp/nvim-autopairs" },
+    },
     config = function()
       require "configs.cmp"
     end,
@@ -60,6 +90,7 @@ return require("packer").startup(function(use)
 
   use {
     "L3MON4D3/LuaSnip",
+    after = "nvim-cmp",
     requires = "nvim-cmp",
     config = function()
       require "configs/luasnip"
@@ -68,6 +99,7 @@ return require("packer").startup(function(use)
 
   use {
     "saadparwaiz1/cmp_luasnip",
+    after = "LuaSnip",
     requires = "LuaSnip",
   }
 
@@ -77,18 +109,20 @@ return require("packer").startup(function(use)
 
   use {
     "zbirenbaum/copilot.lua",
-    event = { "VimEnter" },
+    -- event = { "VimEnter" },
+    after = "nvim-cmp",
     config = function()
       vim.defer_fn(function()
         require("copilot").setup()
       end, 100)
     end,
   }
-  use { "zbirenbaum/copilot-cmp", requires = "copilot.lua", module = "copilot_cmp" }
+  use { "zbirenbaum/copilot-cmp", requires = "copilot.lua", module = "copilot_cmp", after = "copilot.lua" }
 
   -- Easy installation of LSPs and DAP Servers (the antedecent to lspconfig)
   use {
     "williamboman/mason.nvim",
+    cmds = require("core.lazy_cmds").mason_cmds,
     config = function()
       require("mason").setup {}
     end,
@@ -97,6 +131,7 @@ return require("packer").startup(function(use)
   use {
     "williamboman/mason-lspconfig.nvim",
     requires = { "mason.nvim", "nvim-lspconfig" },
+    after = { "mason.nvim", "nvim-lspconfig" },
     config = function()
       require("mason-lspconfig").setup {}
     end,
@@ -105,6 +140,7 @@ return require("packer").startup(function(use)
   -- Used for formatting
   use {
     "jose-elias-alvarez/null-ls.nvim",
+    event = "BufReadPre",
     config = function()
       require "configs.null-ls"
     end,
@@ -118,12 +154,20 @@ return require("packer").startup(function(use)
   }
   use {
     "ray-x/lsp_signature.nvim",
+    event = "InsertEnter",
+    config = function()
+      require("lsp_signature").setup {}
+    end,
   }
 
   -- Treesitter for better highlighting and improved movement
   use {
     "nvim-treesitter/nvim-treesitter",
-    requires = { "windwp/nvim-ts-autotag", "windwp/nvim-autopairs" },
+    -- cmd = require("core.lazy_cmds").treesitter_cmds,
+    requires = {
+      { "windwp/nvim-ts-autotag", after = "nvim-cmp" },
+      { "windwp/nvim-autopairs", after = "nvim-cmp" },
+    },
     config = function()
       require "configs/treesitter"
       require "nvim-treesitter.install"
@@ -133,6 +177,7 @@ return require("packer").startup(function(use)
 
   use {
     "lukas-reineke/indent-blankline.nvim",
+    event = "UIEnter",
     config = function()
       require "configs/indent-blankline"
     end,
@@ -149,6 +194,7 @@ return require("packer").startup(function(use)
   use {
     "ziontee113/syntax-tree-surfer",
     requires = "nvim-treesitter/nvim-treesitter",
+    after = "nvim-treesitter",
     config = function()
       require("syntax-tree-surfer").setup {}
     end,
@@ -176,6 +222,7 @@ return require("packer").startup(function(use)
   --
   use {
     "akinsho/bufferline.nvim",
+    event = "UIEnter",
     tag = "v2.*",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
@@ -230,7 +277,10 @@ return require("packer").startup(function(use)
     end,
   }
 
-  use "JoosepAlviste/nvim-ts-context-commentstring"
+  use {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    after = "nvim-treesitter",
+  }
 
   use {
     "danymat/neogen",
@@ -278,7 +328,11 @@ return require("packer").startup(function(use)
     end,
   }
 
-  use "simrat39/symbols-outline.nvim"
+  use {
+    "simrat39/symbols-outline.nvim",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  }
 
   use {
     "numToStr/FTerm.nvim",
@@ -298,10 +352,4 @@ return require("packer").startup(function(use)
   }
 
   use { "michaelb/sniprun", run = "bash ./install.sh" }
-  use {
-    "rcarriga/nvim-notify",
-    config = function()
-      require("notify").setup {}
-    end,
-  }
 end)

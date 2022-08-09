@@ -1,4 +1,36 @@
-vim.o.hlsearch = false
+local default_plugins = {
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "matchit",
+  "tar",
+  "tarPlugin",
+  "rrhelper",
+  "spellfile_plugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+  "tutor",
+  "rplugin",
+  "syntax",
+  "synmenu",
+  "optwin",
+  "compiler",
+  "bugreport",
+  "ftplugin",
+}
+
+-- Setting loaded to 1 prevents the plugin from loading
+for _, plugin in pairs(default_plugins) do
+  vim.g["loaded_" .. plugin] = 1
+end
 
 -- Make line numbers default
 vim.wo.number = true
@@ -41,37 +73,3 @@ vim.g.maplocalleader = " "
 vim.opt.syntax = "on"
 
 vim.o.laststatus = 3 -- Global Statusline
-
-local default_plugins = {
-  "2html_plugin",
-  "getscript",
-  "getscriptPlugin",
-  "gzip",
-  "logipat",
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "matchit",
-  "tar",
-  "tarPlugin",
-  "rrhelper",
-  "spellfile_plugin",
-  "vimball",
-  "vimballPlugin",
-  "zip",
-  "zipPlugin",
-  "tutor",
-  "rplugin",
-  "syntax",
-  "synmenu",
-  "optwin",
-  "compiler",
-  "bugreport",
-  "ftplugin",
-}
-
--- Setting loaded to 1 prevents the plugin from loading
-for _, plugin in pairs(default_plugins) do
-  vim.g["loaded_" .. plugin] = 1
-end

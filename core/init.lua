@@ -1,4 +1,7 @@
 require "core.opts"
-require "core.mappings"
+vim.defer_fn(function()
+  require "core.mappings"
+end, 0)
+
 require "core.autocmds"
 require "colors"
