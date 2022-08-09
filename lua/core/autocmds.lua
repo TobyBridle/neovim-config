@@ -7,21 +7,6 @@ local langs = {
     make = { exec = "make", },
 }
 
-for lang, data in pairs(langs) do
-    -- if data.build ~= nil then
-    --     vim.api.nvim_create_autocmd(
-    --         "FileType",
-    --         { command = wk.register({ b = { ":!" .. data.build .. "<CR>" } }, { prefix = "<Leader>" }), pattern = lang }
-    --     )
-    -- end
-    vim.api.nvim_create_autocmd(
-        "FileType",
-        { command = "<CMD>lua require'which-key'.register({ e = { ':split<CR>:terminal '" ..
-            data.exec .. "'<CR>' } }, { prefix = '<Leader>' })<CR>",
-            pattern = lang }
-    )
-end
-
 -- Only use Relative Number in Normal Mode
 vim.api.nvim_create_autocmd("InsertEnter", { command = "set norelativenumber", pattern = "*" })
 vim.api.nvim_create_autocmd("InsertLeave", { command = "set relativenumber", pattern = "*" })
