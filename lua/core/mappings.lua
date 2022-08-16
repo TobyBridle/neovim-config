@@ -167,5 +167,5 @@ wk.register({
 -- Terminal Mode
 wk.register({
   ["<C-h>"] = { "<CMD>lua require 'FTerm'.toggle()<CR>", "Toggle the Terminal" },
-  ["<C-d>"] = { "<CMD>lua require 'FTerm'.close()<CR>", "Close the Terminal" },
+  ["<C-d>"] = { "<CMD>lua require 'FTerm'.exit()<CR>", "Close the Terminal" },
 }, { mode = "t" })
