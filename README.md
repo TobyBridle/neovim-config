@@ -1,5 +1,4 @@
 <h1 align="center">Toby's Neovim Config</h1>
-
 <div align="center">
     	<a href="#install">Install</a>
   <span> • </span>
@@ -14,10 +13,12 @@
 <img src="./media/terminal.png" />
 
 <h2 id="install">Install</h2>
-```terminal
-    $ git clone https://github.com/TobyBridle/neovim-config ./nvim && nvim ./nvim/lua/plugins.lua +PackerSync
-```
-There are quite a few command-line dependencies (e.g ripgrep, LazyGit). To find the ones which you have not installed, run <pre>:checkhealth</pre> from within neovim upon install.
+<pre>
+<code class="language-bash">
+$ git clone https://github.com/TobyBridle/neovim-config ./nvim && nvim ./nvim/lua/plugins.lua +PackerSync
+</code>
+</pre>
+There are quite a few command-line dependencies (e.g ripgrep, LazyGit). To find the ones which you have not installed, run <code>:checkhealth</code> from within neovim upon install.
 
 <h2 id="features">Features</h2>
 <ul>
