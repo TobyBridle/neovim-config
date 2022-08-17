@@ -66,7 +66,7 @@ wk.register {
   ["<C-p>"] = { "<CMD>BufferLineTogglePin<CR>", "Pin a buffer on the bufferline" },
 }
 
-wk.register { [","] = { "<CMD>NeoTreeShowToggle<CR>", "Show File Explorer" } }
+wk.register { [","] = { "<CMD>NvimTreeToggle<CR>", "Show File Explorer" } }
 
 -- Comments
 wk.register {

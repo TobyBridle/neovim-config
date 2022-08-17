@@ -41,6 +41,14 @@ return require("packer").startup(function(use)
       require "colors.tokyonight"
     end,
   }
+
+  use {
+    "projekt0n/github-nvim-theme",
+    config = function()
+      require "colors.github"
+    end,
+  }
+
   use {
     "nvim-telescope/telescope.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -189,13 +197,14 @@ return require("packer").startup(function(use)
     end,
   }
 
-  -- use {
-  --     "m-demare/hlargs.nvim",
-  --     requires = "nvim-treesitter/nvim-treesitter",
-  --     config = function()
-  --         require("hlargs").setup {}
-  --     end,
-  -- }
+  use {
+    "m-demare/hlargs.nvim",
+    requires = "nvim-treesitter/nvim-treesitter",
+    event = "InsertEnter",
+    config = function()
+      require("hlargs").setup {}
+    end,
+  }
 
   use {
     "ziontee113/syntax-tree-surfer",
@@ -258,21 +267,19 @@ return require("packer").startup(function(use)
   }
 
   use {
-    "brenoprata10/nvim-highlight-colors",
+    "NvChad/nvim-colorizer.lua",
     config = function()
-      require("nvim-highlight-colors").setup {}
+      require("colorizer").setup {}
     end,
   }
 
   use {
-    "nvim-neo-tree/neo-tree.nvim",
-    requires = "MunifTanjim/nui.nvim",
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons", -- optional, for file icons
+    },
     config = function()
-      require("neo-tree").setup {
-        filesystem = {
-          hijack_netrw_behaviour = "open_default",
-        },
-      }
+      require("nvim-tree").setup {}
     end,
   }
 
@@ -365,6 +372,4 @@ return require("packer").startup(function(use)
       require "configs.harpoon"
     end,
   }
-
-  use { "michaelb/sniprun", run = "bash ./install.sh" }
 end)

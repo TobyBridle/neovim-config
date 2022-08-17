@@ -3,6 +3,6 @@ local M = { lsp = {}, cmd = {} }
 M.lsp.use_lsp_lines = false
 
 -- CMDs
-M.cmd.colorscheme = "tokyonight" -- "catppuccin" | "tokyonight" | "gruvbox-baby"
+M.cmd.colorscheme = "github_dark" -- "catppuccin" | "tokyonight" | "gruvbox-baby" | "github-dark"
 
 return M
