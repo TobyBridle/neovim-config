@@ -364,6 +364,9 @@ return packer.startup(function(use)
     "simrat39/symbols-outline.nvim",
     after = "nvim-treesitter",
     requires = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("symbols-outline").setup {}
+    end,
   }
 
   use {
