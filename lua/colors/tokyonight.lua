@@ -7,7 +7,9 @@ local opts = {
   -- italic_variables = true,
 }
 
+require("tokyonight").setup(opts)
+
 -- Loop opts and set them using vim.g.tokyonight_
-for k, v in pairs(opts) do
-  vim.g["tokyonight_" .. k] = v
-end
+-- for k, v in pairs(opts) do
+--   vim.g["tokyonight_" .. k] = v
+-- end
