@@ -315,6 +315,16 @@ return packer.startup(function(use)
   }
 
   use {
+    "nvim-treesitter/nvim-treesitter-context",
+    after = "nvim-treesitter",
+    config = function()
+      require("treesitter-context").setup {
+        enable = true,
+      }
+    end,
+  }
+
+  use {
     "danymat/neogen",
     config = function()
       require("neogen").setup {}
