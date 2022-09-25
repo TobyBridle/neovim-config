@@ -38,8 +38,10 @@ local servers = {
   "tsserver",
   "cmake",
   "html",
+  "omnisharp",
 }
 local settings = { sumneko_lua = { Lua = { diagnostics = { globals = { "vim", "nvim" } } } } }
+local cmd = { omnisharp = { "mono" } }
 
 for _, server in ipairs(servers) do
   lspconfig[server].setup {
@@ -77,6 +79,7 @@ for _, server in ipairs(servers) do
       register_wk("j", vim.diagnostic.goto_next, "Goto next error in code", "d", "Diagnostics", "<Leader>")
       register_wk("k", vim.diagnostic.goto_prev, "Goto previous error in code", "d", "Diagnostics", "<Leader>")
     end,
+    cmd = cmd[server] or nil,
     settings = settings[server] or {},
   }
 end

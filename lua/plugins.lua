@@ -349,7 +349,7 @@ return packer.startup(function(use)
     config = function()
       require("todo-comments").setup {
         keywords = {
-          HELP = { icon = "ﲉ", color = "warning" },
+          HELP = { icon = "ﲉ", color = "warning", alt = { "SUGGESTION", "IDEA" } },
           CHANGE = { icon = "", color = "error" },
         },
       }
