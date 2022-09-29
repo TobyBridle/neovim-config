@@ -136,15 +136,23 @@ return packer.startup(function(use)
 
   use {
     "zbirenbaum/copilot.lua",
-    -- event = { "VimEnter" },
-    after = "nvim-cmp",
+    event = { "InsertEnter" },
+    -- after = "nvim-cmp",
     config = function()
-      vim.defer_fn(function()
+      vim.schedule(function()
         require("copilot").setup()
-      end, 100)
+      end)
     end,
   }
-  use { "zbirenbaum/copilot-cmp", requires = "copilot.lua", module = "copilot_cmp", after = "copilot.lua" }
+  use {
+    "zbirenbaum/copilot-cmp",
+    requires = "copilot.lua",
+    module = "copilot_cmp",
+    after = "copilot.lua",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  }
 
   -- Easy installation of LSPs and DAP Servers (the antedecent to lspconfig)
   use {
@@ -260,7 +268,7 @@ return packer.startup(function(use)
     tag = "v2.*",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("bufferline").setup { always_show_bufferline = true }
+      require "configs.bufferline"
     end,
   }
 
@@ -388,12 +396,11 @@ return packer.startup(function(use)
 
   -- NOTE: Local in-buffer navigation
   use {
-    "phaazon/hop.nvim",
-    branch = "v2", -- optional but strongly recommended
+    "ggandor/leap.nvim",
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
-      require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
-      require("which-key").register { ["\\"] = { "<CMD>HopWord<CR>", "Quick navigation using Hop" } }
+      require("leap").set_default_keymaps()
+      -- require("which-key").register { ["\\"] = { "<CMD>HopWord<CR>", "Quick navigation using Hop" } }
     end,
   }
   -- NOTE: Between buffers navigation
