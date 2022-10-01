@@ -272,12 +272,17 @@ return packer.startup(function(use)
     end,
   }
 
-  use {
-    "ojroques/nvim-hardline",
-    config = function()
-      require("hardline").setup {}
-    end,
-  }
+  -- use {
+  --   "nvim-lualine/lualine.nvim",
+  --   requires = { "kyazdani42/nvim-web-devicons", opt = true },
+  --   config = function()
+  --     require("lualine").setup {
+  --       options = {
+  --         globalstatus = true,
+  --       },
+  --     }
+  --   end,
+  -- }
 
   use {
     "tiagovla/scope.nvim",
