@@ -30,8 +30,8 @@ wk.register({
   b = {
     name = "Buffer",
     d = { "<CMD>BufferLinePickClose<CR>", "Pick a Buffer to close" },
-    m = { "<CMD>BufferLineMoveNext<CR>", "Move Buffer to Next Position" },
-    M = { "<CMD>BufferLineMovePrev<CR>", "Move Buffer to Previous Position" },
+    l = { "<CMD>BufferLineMoveNext<CR>", "Move Buffer to Next Position" },
+    h = { "<CMD>BufferLineMovePrev<CR>", "Move Buffer to Previous Position" },
   },
   -- Markdown Utilities Keybindings
   m = {
