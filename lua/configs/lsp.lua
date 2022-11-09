@@ -39,16 +39,24 @@ local servers = {
   "cmake",
   "html",
   "omnisharp",
+  "jdtls",
 }
 local settings = { sumneko_lua = { Lua = { diagnostics = { globals = { "vim", "nvim" } } } } }
-local cmd = { omnisharp = { "mono" } }
+local cmd = {
+  omnisharp = {
+    "/opt/homebrew/bin/omnisharp",
+    "--languageserver",
+    "--hostPID",
+    tostring(vim.fn.getpid()),
+  },
+}
 
 for _, server in ipairs(servers) do
   lspconfig[server].setup {
-    capabilities = lsp_capabilities,
+    -- Check if server is clangd
     on_attach = function(client)
       if client.supports_method "textDocument/formatting" then
-        client.resolved_capabilities.document_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
       end
       register_wk("K", vim.lsp.buf.hover, "Show docs for keyword", "", "LSP")
       register_wk("d", vim.lsp.buf.definition, "Goto definition", "g", "LSP")

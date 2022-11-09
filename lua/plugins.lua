@@ -43,6 +43,8 @@ return packer.startup(function(use)
   -- -- THEMES --
   -- Gruvbox theme with integration with Treesitter
 
+  use { "Everblush/everblush.nvim", as = "everblush" }
+
   use {
     "luisiacc/gruvbox-baby",
   }
@@ -71,17 +73,15 @@ return packer.startup(function(use)
   }
 
   use {
+    "Yazeed1s/oh-lucy.nvim",
+  }
+
+  use {
     "nvim-telescope/telescope.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require "configs.telescope"
     end,
-  }
-
-  use {
-    "stevearc/dressing.nvim",
-    -- after = "telescope.nvim",
-    event = "UIEnter",
   }
 
   use "kyazdani42/nvim-web-devicons"
@@ -182,16 +182,18 @@ return packer.startup(function(use)
   }
 
   -- UI Stuff
-
-  use {
-    "weilbith/nvim-code-action-menu",
-    cmd = "CodeActionMenu",
-  }
   use {
     "ray-x/lsp_signature.nvim",
     event = "InsertEnter",
     config = function()
       require("lsp_signature").setup {}
+    end,
+  }
+
+  use {
+    "echasnovski/mini.starter",
+    config = function()
+      require("mini.starter").setup()
     end,
   }
 
@@ -208,6 +210,7 @@ return packer.startup(function(use)
       require "nvim-treesitter.install"
       require("nvim-autopairs").setup {}
     end,
+    run = ":TSUpdate",
   }
 
   use {
@@ -235,22 +238,40 @@ return packer.startup(function(use)
 
   use {
     "ziontee113/syntax-tree-surfer",
-    requires = "nvim-treesitter/nvim-treesitter",
     after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
     config = function()
       require("syntax-tree-surfer").setup {}
     end,
   }
 
+  use {
+    "haringsrob/nvim_context_vt",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("nvim_context_vt").setup {}
+    end,
+  }
+
   -- Debugging
-  use "mfussenegger/nvim-dap"
-  use "rcarriga/nvim-dap-ui"
+  use {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require "configs.dap"
+    end,
+  }
+
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" },
+  }
   use "theHamsta/nvim-dap-virtual-text"
   -- use {
-  --     "simrat39/rust-tools.nvim",
-  --     config = function ()
-  --         require("rust-tools").setup{}
-  --     end,
+  --   "simrat39/rust-tools.nvim",
+  --   config = function()
+  --     require("rust-tools").setup {}
+  --   end,
   -- }
 
   -- Utilities
@@ -392,6 +413,15 @@ return packer.startup(function(use)
     end,
   }
 
+  -- use {
+  --   "mizlan/iswap.nvim",
+  --   after = "nvim-treesitter",
+  --   requires = "nvim-treesitter/nvim-treesitter",
+  --   config = function()
+  --     require("iswap").setup {}
+  --   end,
+  -- }
+
   use {
     "numToStr/FTerm.nvim",
     config = function()
@@ -408,6 +438,14 @@ return packer.startup(function(use)
       -- require("which-key").register { ["\\"] = { "<CMD>HopWord<CR>", "Quick navigation using Hop" } }
     end,
   }
+
+  use {
+    "ggandor/leap-spooky.nvim",
+    requires = "ggandor/leap.nvim",
+    config = function()
+      require("leap-spooky").setup()
+    end,
+  }
   -- NOTE: Between buffers navigation
   use {
     "ThePrimeagen/harpoon",
@@ -415,6 +453,21 @@ return packer.startup(function(use)
     config = function()
       require "configs.harpoon"
     end,
+  }
+
+  use {
+    "folke/noice.nvim",
+    config = function()
+      require("noice").setup()
+    end,
+    requires = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
   }
 
   if packer_bootstrap then
