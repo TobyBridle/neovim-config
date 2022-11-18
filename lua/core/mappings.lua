@@ -8,6 +8,11 @@ map("n", "Q", "<Nop>")
 map("n", "q:", "<Nop>") -- Stop annoying command history
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
+-- Center screen on search and when scrolling
+map("n", "n", "nzzzv", { noremap = true })
+map("n", "N", "Nzzzv", { noremap = true })
+map({ "n", "v", "i" }, "<C-u>", "<C-u>zz")
+map({ "n", "v", "i" }, "<C-d>", "<C-d>zz")
 -- Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -50,7 +55,10 @@ wk.register({
       o = { "<CMD>lua require 'dap'.step_out()<CR>", "Step Out" },
       i = { "<CMD>lua require 'dap'.step_in()<CR>", "Step In" },
       b = { "<CMD>lua require 'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint" },
-      B = { "<CMD>lua require 'dap'.set_breakpoint(vim.fn.input('Breakpoint Condition: '))<CR>", "Set Breakpoint" },
+      B = {
+        "<CMD>lua require 'dap'.set_breakpoint(vim.fn.input('Breakpoint Condition: '))<CR>",
+        "Set Breakpoint",
+      },
       -- B = { "<CMD>lua require 'dap'.set_breakpoint(vim.fn.input('Breakpoint Condition: '))<CR>", "Set Breakpoint"},
     },
   },
@@ -63,11 +71,9 @@ wk.register { ["<S-Tab>"] = { "<CMD>BufferLineCyclePrev<CR>", "Go to previous Bu
 
 wk.register { ["]t"] = { "<CMD>tabnext<CR>", "Go to next Tab" } }
 wk.register { ["[t"] = { "<CMD>tabprevious<CR>", "Go to previous Tab" } }
-
 wk.register {
   ["<C-p>"] = { "<CMD>BufferLineTogglePin<CR>", "Pin a buffer on the bufferline" },
 }
-
 wk.register { [","] = { "<CMD>NvimTreeToggle<CR>", "Show File Explorer" } }
 
 -- Comments
