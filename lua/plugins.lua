@@ -41,10 +41,9 @@ return packer.startup(function(use)
   }
 
   -- -- THEMES --
-  -- Gruvbox theme with integration with Treesitter
-
   use { "Everblush/everblush.nvim", as = "everblush" }
 
+  -- Gruvbox theme with integration with Treesitter
   use {
     "luisiacc/gruvbox-baby",
   }
@@ -75,6 +74,8 @@ return packer.startup(function(use)
   use {
     "Yazeed1s/oh-lucy.nvim",
   }
+
+  use "B4mbus/oxocarbon-lua.nvim"
 
   use {
     "nvim-telescope/telescope.nvim",
@@ -368,6 +369,12 @@ return packer.startup(function(use)
 
   use { "ellisonleao/glow.nvim" }
   use "kdheepak/lazygit.nvim"
+  use {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
+  }
 
   use {
     "folke/trouble.nvim",

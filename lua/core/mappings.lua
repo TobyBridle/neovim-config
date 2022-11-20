@@ -11,8 +11,8 @@ map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 -- Center screen on search and when scrolling
 map("n", "n", "nzzzv", { noremap = true })
 map("n", "N", "Nzzzv", { noremap = true })
-map({ "n", "v", "i" }, "<C-u>", "<C-u>zz")
 map({ "n", "v", "i" }, "<C-d>", "<C-d>zz")
+map({ "n", "v", "i" }, "<C-b>", "<C-b>zz")
 -- Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -64,6 +64,20 @@ wk.register({
   },
   -- Terminal Keybindings
   t = { "<CMD>lua require 'FTerm'.toggle()<CR>", "Toggle a Terminal" },
+  -- Git Keybindings
+  g = {
+    name = "Git",
+    l = { "<CMD>LazyGit<CR>", "Toggle the Lazygit UI" },
+    d = { "<CMD>Gitsigns diffthis<CR>", "Show Diff using Gitsigns" },
+    h = { "<CMD>Gitsigns preview_hunk<CR>", "Preview Hunk using Gitsigns" },
+    k = { "<CMD>Gitsigns prev_hunk<CR>", "Previous Hunk using Gitsigns" },
+    j = { "<CMD>Gitsigns next_hunk<CR>", "Next Hunk using Gitsigns" },
+    s = { "<CMD>Gitsigns stage_hunk<CR>", "Stage Hunk using Gitsigns" },
+    S = { "<CMD>Gitsigns stage_buffer<CR>", "Stage Buffer using Gitsigns" },
+    u = { "<CMD>Gitsigns reset_hunk<CR>", "Reset Hunk using Gitsigns" },
+    U = { "<CMD>Gitsigns reset_buffer<CR>", "Reset Buffer using Gitsigns" },
+    y = { "<CMD>Gitsigns select_hunk<CR>", "Select Hunk using Gitsigns" },
+  },
 }, { prefix = "<Leader>" })
 
 wk.register { ["<Tab>"] = { "<CMD>BufferLineCycleNext<CR>", "Go to next Buffer" } }
@@ -85,7 +99,6 @@ wk.register {
       i = { name = "Comment (in motion)" },
       a = { name = "Comment (around motion)" },
     },
-    l = { "<CMD>LazyGit<CR>", "Lazygit UI" },
   },
 }
 

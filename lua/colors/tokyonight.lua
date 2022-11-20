@@ -1,10 +1,10 @@
 local opts = {
-  style = "night",
-  transparent = true,
-  italic_comments = true,
-  -- italic_keywords = true,
-  -- italic_functions = true,
-  -- italic_variables = true,
+	style = "night",
+	transparent = true,
+	italic_comments = true,
+	-- italic_keywords = true,
+	-- italic_functions = true,
+	-- italic_variables = true,
 }
 
 require("tokyonight").setup(opts)
