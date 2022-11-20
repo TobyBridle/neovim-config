@@ -48,6 +48,10 @@ vim.opt.smartindent = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 
+-- Make splitting more natural
+vim.o.splitbelow = true
+vim.o.splitright = true
+
 -- Save undo history
 vim.o.undofile = true
 
@@ -73,3 +77,5 @@ vim.g.maplocalleader = " "
 vim.opt.syntax = "on"
 
 vim.o.laststatus = 3 -- Global Statusline
+
+vim.o.cmdheight = 0
