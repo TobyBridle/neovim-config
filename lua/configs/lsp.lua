@@ -65,7 +65,7 @@ for _, server in ipairs(servers) do
       register_wk("r", "<CMD>Telescope lsp_references<CR>", "Show references", "g", "LSP")
 
       register_wk("r", vim.lsp.buf.rename, "Rename using LSP", "l", "LSP Utils", "<Leader>")
-      register_wk("a", "<CMD>CodeActionMenu<CR>", "Explore code actions", "l", "LSP Utils", "<Leader>")
+      register_wk("a", vim.lsp.buf.code_action, "Explore code actions", "l", "LSP Utils", "<Leader>")
       register_wk("o", "<CMD>SymbolsOutline<CR>", "Explore code outline", "l", "LSP Utils", "<Leader>")
 
       register_wk(

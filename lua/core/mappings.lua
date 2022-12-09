@@ -68,7 +68,7 @@ wk.register({
   g = {
     name = "Git",
     l = { "<CMD>LazyGit<CR>", "Toggle the Lazygit UI" },
-    d = { "<CMD>Gitsigns diffthis<CR>", "Show Diff using Gitsigns" },
+    d = { "<CMD>Gitsigns diffthis<CR><C-w>x", "Show Diff using Gitsigns" },
     h = { "<CMD>Gitsigns preview_hunk<CR>", "Preview Hunk using Gitsigns" },
     k = { "<CMD>Gitsigns prev_hunk<CR>", "Previous Hunk using Gitsigns" },
     j = { "<CMD>Gitsigns next_hunk<CR>", "Next Hunk using Gitsigns" },
@@ -190,3 +190,11 @@ wk.register({
   ["<C-h>"] = { "<CMD>lua require 'FTerm'.toggle()<CR>", "Toggle the Terminal" },
   ["<C-d>"] = { "<CMD>lua require 'FTerm'.exit()<CR>", "Close the Terminal" },
 }, { mode = "t" })
+
+-- Use Arrow keys to navigate between panes
+wk.register {
+  ["<Left>"] = { "<C-w>h", "Go to Left Pane" },
+  ["<Down>"] = { "<C-w>j", "Go to Bottom Pane" },
+  ["<Up>"] = { "<C-w>k", "Go to Top Pane" },
+  ["<Right>"] = { "<C-w>l", "Go to Right Pane" },
+}

@@ -74,8 +74,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Syntax ON means that indentation will not be ruined
-vim.opt.syntax = "on"
+-- vim.opt.syntax = "on"
 
 vim.o.laststatus = 3 -- Global Statusline
 
-vim.o.cmdheight = 0
+-- vim.o.cmdheight = 0
