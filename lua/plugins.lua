@@ -65,21 +65,8 @@ return packer.startup(function(use)
   }
 
   use {
-    "projekt0n/github-nvim-theme",
-    config = function()
-      require "colors.github"
-    end,
-  }
-
-  use {
-    "Yazeed1s/oh-lucy.nvim",
-  }
-
-  use "B4mbus/oxocarbon-lua.nvim"
-
-  use {
     "nvim-telescope/telescope.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
     config = function()
       require "configs.telescope"
     end,
@@ -145,6 +132,7 @@ return packer.startup(function(use)
       end)
     end,
   }
+
   use {
     "zbirenbaum/copilot-cmp",
     requires = "copilot.lua",
@@ -258,32 +246,12 @@ return packer.startup(function(use)
   -- Debugging
   use {
     "mfussenegger/nvim-dap",
+    requires = { "rcarriga/nvim-dap-ui", "theHamsta/nvim-dap-virtual-text" },
     config = function()
       require "configs.dap"
     end,
   }
 
-  use {
-    "rcarriga/nvim-dap-ui",
-    requires = { "mfussenegger/nvim-dap" },
-  }
-  use "theHamsta/nvim-dap-virtual-text"
-  -- use {
-  --   "simrat39/rust-tools.nvim",
-  --   config = function()
-  --     require("rust-tools").setup {}
-  --   end,
-  -- }
-
-  -- Utilities
-  -- use {
-  --   "romgrk/barbar.nvim",
-  --   requires = { "kyazdani42/nvim-web-devicons" },
-  --   config = function()
-  --     require("bufferline").setup { auto_hide = false }
-  --   end,
-  -- }
-  --
   use {
     "akinsho/bufferline.nvim",
     event = "UIEnter",
@@ -291,25 +259,6 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require "configs.bufferline"
-    end,
-  }
-
-  -- use {
-  --   "nvim-lualine/lualine.nvim",
-  --   requires = { "kyazdani42/nvim-web-devicons", opt = true },
-  --   config = function()
-  --     require("lualine").setup {
-  --       options = {
-  --         globalstatus = true,
-  --       },
-  --     }
-  --   end,
-  -- }
-
-  use {
-    "tiagovla/scope.nvim",
-    config = function()
-      require("scope").setup {}
     end,
   }
 
@@ -368,6 +317,8 @@ return packer.startup(function(use)
   }
 
   use { "ellisonleao/glow.nvim" }
+
+  -- Git stuff
   use "kdheepak/lazygit.nvim"
   use {
     "lewis6991/gitsigns.nvim",
@@ -405,13 +356,6 @@ return packer.startup(function(use)
   }
 
   use {
-    "folke/twilight.nvim",
-    config = function()
-      require("twilight").setup {}
-    end,
-  }
-
-  use {
     "simrat39/symbols-outline.nvim",
     after = "nvim-treesitter",
     requires = "nvim-treesitter/nvim-treesitter",
@@ -420,14 +364,14 @@ return packer.startup(function(use)
     end,
   }
 
-  -- use {
-  --   "mizlan/iswap.nvim",
-  --   after = "nvim-treesitter",
-  --   requires = "nvim-treesitter/nvim-treesitter",
-  --   config = function()
-  --     require("iswap").setup {}
-  --   end,
-  -- }
+  use {
+    "mizlan/iswap.nvim",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("iswap").setup {}
+    end,
+  }
 
   use {
     "numToStr/FTerm.nvim",
@@ -460,21 +404,6 @@ return packer.startup(function(use)
     config = function()
       require "configs.harpoon"
     end,
-  }
-
-  use {
-    "folke/noice.nvim",
-    config = function()
-      require("noice").setup()
-    end,
-    requires = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
   }
 
   if packer_bootstrap then
