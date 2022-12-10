@@ -43,12 +43,12 @@ local servers = {
 }
 local settings = { sumneko_lua = { Lua = { diagnostics = { globals = { "vim", "nvim" } } } } }
 local cmd = {
-  omnisharp = {
-    "/opt/homebrew/bin/omnisharp",
-    "--languageserver",
-    "--hostPID",
-    tostring(vim.fn.getpid()),
-  },
+  -- omnisharp = {
+  --   "/opt/homebrew/bin/omnisharp",
+  --   "--languageserver",
+  --   "--hostPID",
+  --   tostring(vim.fn.getpid()),
+  -- },
 }
 
 for _, server in ipairs(servers) do
@@ -61,31 +61,12 @@ for _, server in ipairs(servers) do
       register_wk("K", vim.lsp.buf.hover, "Show docs for keyword", "", "LSP")
       register_wk("d", vim.lsp.buf.definition, "Goto definition", "g", "LSP")
       register_wk("T", vim.lsp.buf.type_definition, "Goto type definition", "g", "LSP")
-      register_wk("i", vim.lsp.buf.implementation, "Goto implementation", "g", "LSP")
+      register_wk("i", "<CMD>Telescope lsp_implentations<CR>", "Goto implementations", "g", "LSP")
       register_wk("r", "<CMD>Telescope lsp_references<CR>", "Show references", "g", "LSP")
 
       register_wk("r", vim.lsp.buf.rename, "Rename using LSP", "l", "LSP Utils", "<Leader>")
       register_wk("a", vim.lsp.buf.code_action, "Explore code actions", "l", "LSP Utils", "<Leader>")
       register_wk("o", "<CMD>SymbolsOutline<CR>", "Explore code outline", "l", "LSP Utils", "<Leader>")
-
-      register_wk(
-        "l",
-        "<CMD>Telescope diagnostics<CR>",
-        "Show diagnostics in Telescope",
-        "d",
-        "Diagnostics",
-        "<Leader>"
-      )
-      register_wk(
-        "t",
-        "<CMD>TroubleToggle document_diagnostics<CR>",
-        "Show diagnostics in Trouble",
-        "d",
-        "Diagnostics",
-        "<Leader>"
-      )
-      register_wk("j", vim.diagnostic.goto_next, "Goto next error in code", "d", "Diagnostics", "<Leader>")
-      register_wk("k", vim.diagnostic.goto_prev, "Goto previous error in code", "d", "Diagnostics", "<Leader>")
     end,
     cmd = cmd[server] or nil,
     settings = settings[server] or {},

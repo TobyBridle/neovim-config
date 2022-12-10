@@ -2,7 +2,7 @@ local wk = require "which-key"
 local map = function(mode, key, cmd, opts)
   vim.keymap.set(mode, key, cmd, opts or { noremap = true, silent = true })
 end
---
+
 -- Normal
 map("n", "Q", "<Nop>")
 map("n", "q:", "<Nop>") -- Stop annoying command history
@@ -46,21 +46,6 @@ wk.register({
   -- LSP Keybindings
   l = {
     g = { "<CMD>Neogen<CR>", "Generate Docstring under Cursor" },
-  },
-  -- Debugger Keybindings
-  d = {
-    d = {
-      name = "Debugger",
-      c = { "<CMD>lua require 'dap'.continue()<CR>", "Continue" },
-      o = { "<CMD>lua require 'dap'.step_out()<CR>", "Step Out" },
-      i = { "<CMD>lua require 'dap'.step_in()<CR>", "Step In" },
-      b = { "<CMD>lua require 'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint" },
-      B = {
-        "<CMD>lua require 'dap'.set_breakpoint(vim.fn.input('Breakpoint Condition: '))<CR>",
-        "Set Breakpoint",
-      },
-      -- B = { "<CMD>lua require 'dap'.set_breakpoint(vim.fn.input('Breakpoint Condition: '))<CR>", "Set Breakpoint"},
-    },
   },
   -- Terminal Keybindings
   t = { "<CMD>lua require 'FTerm'.toggle()<CR>", "Toggle a Terminal" },
@@ -176,15 +161,6 @@ wk.register {
   },
 }
 
-wk.register({
-  v = {
-    J = { "<CMD>STSSelectNextSiblingNode<CR>", "Select Next Sibling Node" },
-    K = { "<CMD>STSSelectPrevSiblingNode<CR>", "Select Previous Sibling Node" },
-    H = { "<CMD>STSSelectParentNode<CR>", "Select Parent Node" },
-    L = { "<CMD>STSSelectChildNode<CR>", "Select Child Node" },
-  },
-}, { mode = "v" })
-
 -- Terminal Mode
 wk.register({
   ["<C-h>"] = { "<CMD>lua require 'FTerm'.toggle()<CR>", "Toggle the Terminal" },
@@ -197,4 +173,29 @@ wk.register {
   ["<Down>"] = { "<C-w>j", "Go to Bottom Pane" },
   ["<Up>"] = { "<C-w>k", "Go to Top Pane" },
   ["<Right>"] = { "<C-w>l", "Go to Right Pane" },
+}
+
+wk.register({
+  ["d"] = {
+    name = "Debugging / Diagnostics",
+    ["b"] = { "<CMD>lua require'dap'.toggle_breakpoint()<CR>", "Toggle a Breakpoint" },
+    ["B"] = {
+      "<CMD>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint Condition: '))<CR>",
+      "Breakpoint on Condition",
+    },
+    ["l"] = {
+      "<CMD>Telescope diagnostics<CR>",
+      "Show diagnostics in Telescope",
+    },
+    ["t"] = { "<CMD>TroubleToggle document_diagnostics<CR>", "Show diagnostics in Trouble" },
+    ["j"] = { vim.diagnostic.goto_next, "Goto next error in code" },
+    ["k"] = { vim.diagnostic.goto_prev, "Goto previous error in code" },
+  },
+}, { prefix = "<Leader>" })
+
+wk.register {
+  ["<F3>"] = { "<CMD>lua require'dap'.continue()<CR>", "Continue the Debugger" },
+  ["<F5>"] = { "<CMD>lua require'dap'.step_over()<CR>", "Step Over" },
+  ["<F7>"] = { "<CMD>lua require'dap'.step_into()<CR>", "Step Into" },
+  ["<F9>"] = { "<CMD>lua require'dap'.step_out()<CR>", "Step Out" },
 }
