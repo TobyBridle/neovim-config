@@ -17,7 +17,6 @@ cmp.setup {
     end,
   },
   window = {
-    completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert {
@@ -38,7 +37,7 @@ cmp.setup {
   experimental = { ghost_text = true },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    { name = "copilot" },
+    -- { name = "copilot" },
     { name = "luasnip" }, -- For luasnip users.
   }, {
     { name = "buffer", keyword_length = 4 },
