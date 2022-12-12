@@ -88,9 +88,8 @@ return packer.startup(function(use)
 
   use {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
     requires = {
-      { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
       { "hrsh7th/cmp-path", after = "nvim-cmp" },
       { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
@@ -146,19 +145,11 @@ return packer.startup(function(use)
   -- Easy installation of LSPs and DAP Servers (the antedecent to lspconfig)
   use {
     "williamboman/mason.nvim",
-    cmds = require("core.lazy_cmds").mason_cmds,
-    config = function()
-      require("mason").setup {}
-    end,
   }
 
   use {
     "williamboman/mason-lspconfig.nvim",
     requires = { "mason.nvim", "nvim-lspconfig" },
-    after = { "mason.nvim", "nvim-lspconfig" },
-    config = function()
-      require("mason-lspconfig").setup {}
-    end,
   }
 
   -- Used for formatting
@@ -387,6 +378,16 @@ return packer.startup(function(use)
       -- you can configure Hop the way you like here; see :h hop-config
       require("leap").set_default_keymaps()
       -- require("which-key").register { ["\\"] = { "<CMD>HopWord<CR>", "Quick navigation using Hop" } }
+    end,
+  }
+
+  -- NOTE: Scoped use of buffers.
+  -- Buffers belong to tabs rather than being globally
+  -- accessible.
+  use {
+    "tiagovla/scope.nvim",
+    config = function()
+      require("scope").setup {}
     end,
   }
 
