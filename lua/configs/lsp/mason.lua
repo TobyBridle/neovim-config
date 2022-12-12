@@ -31,7 +31,6 @@ mason_lsp.setup {
     "html",
     "omnisharp",
     "jdtls",
-    "haskell-language-server",
   },
 }
 
