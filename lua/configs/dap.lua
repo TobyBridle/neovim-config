@@ -53,5 +53,6 @@ dap.configurations.cpp = dap.configurations.c
 
 -- We want cool sign column things for the breakpoints
 vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "🔵", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "⭕️", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
