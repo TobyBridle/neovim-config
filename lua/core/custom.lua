@@ -1,8 +1,9 @@
-local M = { lsp = {}, cmd = {} }
+local M = { lsp = {}, colorscheme = {} }
 -- LSP RELATED
 M.lsp.use_lsp_lines = false
 
 -- CMDs
-M.cmd.colorscheme = "gruvbox-baby" -- "catppuccin" | "tokyonight" | "gruvbox-baby" | "everblush"
+M.colorscheme.theme = "catppuccin-mocha" -- "catppuccin" | "tokyonight" | "gruvbox-baby" | "everblush"
+M.colorscheme.transparent = true
 
 return M
