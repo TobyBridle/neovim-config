@@ -51,6 +51,23 @@ dap.configurations.c = {
 dap.configurations.rust = dap.configurations.c
 dap.configurations.cpp = dap.configurations.c
 
+dap.adapters.coreclr = {
+  type = "executable",
+  command = os.getenv "HOME" .. "/.local/share/nvim/mason/bin/netcoredbg",
+  args = { "--interpreter=vscode" },
+}
+
+dap.configurations.cs = {
+  {
+    type = "coreclr",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = function()
+      return vim.fn.input("Path to DLL > ", vim.fn.getcwd() .. "/bin/Debug/", "file")
+    end,
+  },
+}
+
 -- We want cool sign column things for the breakpoints
 vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointCondition", { text = "🔵", texthl = "", linehl = "", numhl = "" })
