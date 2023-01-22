@@ -78,4 +78,5 @@ vim.g.maplocalleader = " "
 
 vim.o.laststatus = 3 -- Global Statusline
 
+-- vim.opt.fillchars:append "diff:∕"
 -- vim.o.cmdheight = 0

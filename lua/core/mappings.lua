@@ -16,6 +16,8 @@ map({ "n", "v", "i" }, "<C-b>", "<C-b>zz")
 -- Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- Sane line merging
+map("n", "J", "mzJ`z")
 
 wk.register({
   -- File Keybindings
@@ -35,6 +37,7 @@ wk.register({
   b = {
     name = "Buffer",
     d = { "<CMD>BufferLinePickClose<CR>", "Pick a Buffer to close" },
+    D = { "<CMD>%bd|e#|bd#<CR>|'\"", "Delete all Buffers except the Current" },
     l = { "<CMD>BufferLineMoveNext<CR>", "Move Buffer to Next Position" },
     h = { "<CMD>BufferLineMovePrev<CR>", "Move Buffer to Previous Position" },
   },
@@ -53,15 +56,6 @@ wk.register({
   g = {
     name = "Git",
     l = { "<CMD>LazyGit<CR>", "Toggle the Lazygit UI" },
-    d = { "<CMD>Gitsigns diffthis<CR><C-w>x", "Show Diff using Gitsigns" },
-    h = { "<CMD>Gitsigns preview_hunk<CR>", "Preview Hunk using Gitsigns" },
-    k = { "<CMD>Gitsigns prev_hunk<CR>", "Previous Hunk using Gitsigns" },
-    j = { "<CMD>Gitsigns next_hunk<CR>", "Next Hunk using Gitsigns" },
-    s = { "<CMD>Gitsigns stage_hunk<CR>", "Stage Hunk using Gitsigns" },
-    S = { "<CMD>Gitsigns stage_buffer<CR>", "Stage Buffer using Gitsigns" },
-    u = { "<CMD>Gitsigns reset_hunk<CR>", "Reset Hunk using Gitsigns" },
-    U = { "<CMD>Gitsigns reset_buffer<CR>", "Reset Buffer using Gitsigns" },
-    y = { "<CMD>Gitsigns select_hunk<CR>", "Select Hunk using Gitsigns" },
   },
 }, { prefix = "<Leader>" })
 
