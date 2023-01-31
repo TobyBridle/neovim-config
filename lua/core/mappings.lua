@@ -100,7 +100,9 @@ wk.register({
 
 -- Todo List Keybindings
 wk.register {
-  ["<C-;>"] = {
+  -- ["<C-;>"] = {
+  -- BUG: Until I can get Wezterm to work with <C-;>, `\` will be used as a replacment
+  ["\\"] = {
     name = "Todo List",
     t = { "<CMD>TodoTrouble<CR>", "Display TODOs in Trouble" },
     s = { "<CMD>TodoTelescope<CR>", "Display TODOs in Telescope" },

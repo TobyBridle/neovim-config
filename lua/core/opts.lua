@@ -40,7 +40,7 @@ vim.wo.relativenumber = true
 vim.o.mouse = "a"
 
 -- Global statusline
-vim.opt.laststatus = 3
+vim.opt.laststatus = 1
 
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
@@ -75,8 +75,5 @@ vim.g.maplocalleader = " "
 
 -- Syntax ON means that indentation will not be ruined
 -- vim.opt.syntax = "on"
-
-vim.o.laststatus = 3 -- Global Statusline
-
 -- vim.opt.fillchars:append "diff:∕"
 -- vim.o.cmdheight = 0
