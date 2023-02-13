@@ -66,7 +66,7 @@ return packer.startup(function(use)
 
   use {
     "nvim-telescope/telescope.nvim",
-    requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
+    requires = { "nvim-lua/plenary.nvim" },
     config = function()
       require "configs.telescope"
     end,
@@ -150,6 +150,15 @@ return packer.startup(function(use)
   use {
     "williamboman/mason-lspconfig.nvim",
     requires = { "mason.nvim", "nvim-lspconfig" },
+  }
+
+  use {
+    "jay-babu/mason-nvim-dap.nvim",
+    requires = { "mason.nvim", "nvim-dap" },
+    config = function()
+      require("mason-nvim-dap").setup { automatic_setup = true }
+      require("mason-nvim-dap").setup_handlers()
+    end,
   }
 
   -- Used for formatting

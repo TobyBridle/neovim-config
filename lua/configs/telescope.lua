@@ -64,7 +64,7 @@ options = {
     },
   },
 
-  extensions_list = { "fzy_native", "projections" },
+  extensions_list = {},
 }
 
 -- check for any override
