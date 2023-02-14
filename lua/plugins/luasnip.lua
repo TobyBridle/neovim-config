@@ -13,12 +13,12 @@ return {
     -- stylua: ignore
     keys = {
       {
-        "<C-j>",
+        "<C-l>",
         function()
           return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next"
         end,
         expr = true, silent = true, mode = {"i", "s"},
       },
-      { "<C-l>", function() require("luasnip").jump(-1) end, mode = {"i", "s"} },
+      { "<C-j>", function() require("luasnip").jump(-1) end, mode = {"i", "s"} },
     },
 }
